@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -49,7 +48,7 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
   $("#btnGuardar").tap(function (){
 	    if($("#imagen").attr("src")==""){
-		      alert("Antes de registrar el servicio debe tomar una fotografía del mismo ");
+		      alert("Antes de registrar el servicio se recomienda capturar imagen");
 	    }else{
 		      var nom=$("#Nombre").val();
 		      var dir=$("#Direccion").val();
@@ -151,7 +150,7 @@ $("#btnActId").tap(function (){
   var cla=$("#cla1").val();
 
   if(nom=="" || dir=="" || rfc=="" ||tel==""|| lat==""){
-    alert("Favor de registrar valores en todos los campos");
+    alert("Por favor ingrese todos los valores correspondientes");
   }else{
       $.ajax({
         type:"POST",
@@ -213,13 +212,13 @@ function obtenerUbicacion(){//Funcion que obtiene la Ubicación del dispositivo 
 	      marca=new google.maps.Marker({
 		        position:corUbic,
 		        map:map,
-		        title:"Usted esta ubicado aqui",
+		        title:"Actualmente Usted esta ubicado aqui",
 		        animation:google.maps.Animation.DROP
 	      });
 
 	      infoVentanta=new google.maps.InfoWindow({
 		      position:corUbic,
-		      content:"<p>Tu Ubicación es: </p>"+corUbic
+		      content:"<p>Su Ubicación es: </p>"+corUbic
 	      });
 	      google.maps.event.addListener(marca, "click", function(){infoVentanta.open(map,this);});
 	     }
@@ -269,7 +268,7 @@ function dibujarMarcas(nombre, dir, rfc, tel, lat, lng, ruta){//habilitar esta f
 
 	var infoVentanta2=new google.maps.InfoWindow({
 	  position:latlng,
-	  content:'<div style="width:200px; height:160px;"><div style="text-align: center; color:#5c041b; font-weight:bolder; font-size:12px; font-family:arial;">' + nombre + '</div><img src="http://iscmoviles.890m.com/'+ruta+'" width="90" heigth="60" /><div style="text-align:center; color: #2e20b8; font-size:12px; font-family:arial; width:200px; text-align:center;">' + dir + '</div><div>Tel: ' + tel + '</div><div>RFC:' + rfc + '</div>'
+	  content:'<div style="width:200px; height:160px;"><div style="text-align: center; color:#5c041b; font-weight:bolder; font-size:12px; font-family:arial;">' + nombre + '</div><img src="http://angelmovil.esy.es/'+ruta+'" width="90" heigth="60" /><div style="text-align:center; color: #2e20b8; font-size:12px; font-family:arial; width:200px; text-align:center;">' + dir + '</div><div>Tel: ' + tel + '</div><div>RFC:' + rfc + '</div>'
 	});
 	google.maps.event.addListener(marca2, "click", function(){infoVentanta2.open(map,marca2);});
 }
@@ -295,13 +294,13 @@ text-align:center;
 <body>
 <div data-role="page" id="Principal">
       <div data-role="header" data-position="fixed">
-	<h1>Catálogo de Servicios Libres</h1>
+	<h1>Catálogo de Servicios </h1>
       </div>
       <div data-role="content" >
 	  <ul data-role="listview">
-	    <li data-role="list-divider" style="text-align:center;">Operaciones</li>
-      <li><a href="#Registrar">Registrar servicios</a></li>
-	    <li><a href="#Consultar">Consultar servicios</a></li>
+	    <li data-role="list-divider" style="text-align:center;">Opciones Disponibles</li>
+      <li><a href="#Registrar">Registrar un servico nuevo</a></li>
+	    <li><a href="#Consultar">Consultar Catálogo de servicios</a></li>
 	    <li><a href="#Actualizar">Actualizar servicios</a></li>
 	    <li><a href="#Eliminar">Eliminiar servicios</a></li>
 	  </ul>
@@ -315,7 +314,7 @@ text-align:center;
 
 <div data-role="page" id="Registrar">
       <div data-role="header" data-position="fixed">
-	<h1>Registro de Servicios</h1>
+	<h1>Registro de Servicio nuevo</h1>
       </div>
       <div data-role="content" >
 	  <input type="text" id="Nombre" placeholder="Nombre" />
@@ -407,3 +406,4 @@ text-align:center;
 </div>
 </body>
 </html>
+
